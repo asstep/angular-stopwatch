@@ -81,7 +81,7 @@ export class StopwatchComponent implements OnInit {
   }
 
   private timerSubscribe(time = 0): void {                                //  Start counting timer seconds,
-    this.timer$ = timer(0, 100)
+    this.timer$ = timer(0, 1000)
       .subscribe((e) => {
         this.timerData = time + e;
         this.timeDisplay = this.getDisplayTime(this.timerData);
