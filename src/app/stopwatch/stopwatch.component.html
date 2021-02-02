@@ -1,0 +1,35 @@
+
+<div class="stopwatch">
+  <div class="stopwatch__data">
+    <div *ngFor="let time of stopWatchTimes">{{time}}</div>
+  </div>
+  <div class="stopwatch__display">
+    <span class="stopwatch__time stopwatch__time_hours"
+          [innerHTML]="timeDisplay.hours?.digit1 + timeDisplay.hours?.digit2 + ':'" ></span>
+    <span class="stopwatch__time stopwatch__time_minutes"
+          [innerHTML]="timeDisplay.minutes?.digit1 + timeDisplay.minutes?.digit2 + ':'" ></span>
+    <span class="stopwatch__time stopwatch__time_seconds"
+          [innerHTML]="timeDisplay.seconds?.digit1 + timeDisplay.seconds?.digit2" ></span>
+  </div>
+
+  <div class="stopwatch__buttons">
+    <button mat-raised-button color="primary"
+            (click)="startTimeCount()"
+            [innerHTML]="isStartWatch ? 'Stop' : 'Start'"></button>
+
+    <button mat-raised-button color="accent"
+            (click)="waitTimer($event)"
+            [disabled]="!isStartWatch"
+            [innerHTML]="isWaitWatch ? 'Continue' : 'Wait'"></button>
+
+    <button mat-raised-button color="warn"
+            (click)="resetTimer()">Reset</button>
+
+    <button mat-raised-button
+            (click)="recordTime()"
+            [disabled]="!isStartWatch">Record</button>
+
+  </div>
+</div>
+
+
